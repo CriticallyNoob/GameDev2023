@@ -1,4 +1,4 @@
-<h5> Version 0.0.2</h5>
+<h5> Version 0.0.3</h5>
 
 <h1 align=cnter> t1a02-lists-and-tables-by-Jacob</h1>
 
@@ -33,15 +33,18 @@
 then make a link and image table with border=0<br><br><br>
 
 <h2>Advanced</h2>
-
+function setImageVisible(myImage01, visible) {
+    var img = document.getElementById(myImage01);
+    img.style.visibility = (visible ? 'visible' : 'hidden');
+}
 Load an image and get it to move 10 pixels to the left usin the button below<br>
 
-<image id="myImage01" src="vibe check passed.jfif" style="position:relative; left:0; top:0; width:50; height:50; ".<br>
-<image id="myImage02" src="vibe check failed.jpg" style= "position: relative; left:200px; top:0; width:50; height:50; visability.hidden".<b>
+<image id="myImage01" src="vibe check passed.jfif" style="position:relative; left:0; top:0; width:100; height:100; ".<br>
+<image id="myImage02" src="vibe check failed.jpg" style= "position: relative; left:200px; top:0; width:100; height:100; visability.hidden".<b>
 
 <input type=button value="Go left" onclick="{
-                                            document.getElementById('myImage01').style.visability = hidden
-                                            document.getElementById('myImage02').style.visability = show
+                                            document.getElementById('myImage01').style.visability = 'hidden'
+                                            document.getElementById('myImage02').style.visability = 'visable'
                                             document.getElementById('myDiv01').innerHTML = 'just kidding...'
                                             }">
 
