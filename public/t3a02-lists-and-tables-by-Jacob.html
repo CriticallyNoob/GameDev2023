@@ -1,4 +1,4 @@
-<h5> Version 0.0.4</h5>
+<h5> Version 0.0.5</h5>
 
 <h1 align=cnter> t1a02-lists-and-tables-by-Jacob</h1>
 
@@ -37,6 +37,10 @@ then make a link and image table with border=0<br><br><br>
     var img = document.getElementById(myImage01);
     img.style.visibility = (visible ? 'visible' : 'hidden');
 }
+
+function setImageVisiblity(myImage02, visable) {
+    var img = document.getElementById(myImage02);
+    img.style.visibility = (hidden ? 'visible' : 'hidden');
 </script>
 Load an image and get it to move 10 pixels to the left usin the button below<br>
 
@@ -45,7 +49,7 @@ Load an image and get it to move 10 pixels to the left usin the button below<br>
 
 <input type=button value="Go left" onclick="{
                                            javascript:setImageVisible('myImage01', false)
-                                            document.getElementById('myImage02').style.visability = 'visable'
+                                            javascript:setImageVisiblity('myImage02', true)
                                             document.getElementById('myDiv01').innerHTML = 'just kidding...'
                                             }">
 
