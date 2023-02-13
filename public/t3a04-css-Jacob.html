@@ -1,16 +1,16 @@
 <head>
-    <h5>Version 0.1.5</h5>
+    <h5>Version 0.1.7</h5>
 
 
-<h1 align="center">CSS stuff</h1>
+<h1 align="center"><b>CSS stuff</b></h1>
 
 <style>
     Body {
-    background-color: rgb(87, 84, 87);
+    background-image: url(https://static.wikia.nocookie.net/killer-bean/images/9/9b/KBF_Killer_Bean.png/revision/latest?cb=20221008001433);
     font-size:10px;
     font-family: Arial, Helvetica, sans-serif;
-    color:aliceblue;
-    margin:50px;
+    color:black;
+    margin:40px;
 }
 .button {
     color:gray;
@@ -47,10 +47,16 @@ button:active{
     background-color:beige;
     font-size:15px;
     font:300;
-    margin-left:250px;
-    width 100px;
+    width:250px;
+    height:100px;
 }
 </style>
+<script>
+    function sound(){
+     var snd = new Audio('Coin')
+     snd.play()
+}
+</script>
 </head>
 <body>
 <button class="prankd" onclick="{
@@ -69,14 +75,22 @@ cool button
     <hr>
     
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pvjO8OuRmuY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><br><br>
-    <textarea class="text">
+    <button onclick="{
+        document.getElementById('text').style.marginLeft='250px'
+        }">Move TextArea</button>
+<textarea id="text" class="text">
     this is a textbox that just kinda exists here
    </textarea><br><br>
+   <button onclick="sound()">the coin sound button</button>
     <hr>
-   <img src="https://c.tenor.com/u-6qQcHupbsAAAAM/me-and-the-boys-when-we-find-the-funny-funny.gif"><br>
+   <img src="https://c.tenor.com/u-6qQcHupbsAAAAM/me-and-the-boys-when-we-find-the-funny-funny.gif"><br><br>
     
      <button class="button"
           onclick="window.location.href = 'https://criticallynoob.github.io/GameDev2023/public/index.html';">
             back to index
   </button>
+
+ 
+  
 </body>
+
