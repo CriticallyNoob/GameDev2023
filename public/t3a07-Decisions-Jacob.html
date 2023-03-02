@@ -1,1 +1,69 @@
-'ello there
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="style.css">
+<script src="scripts.js"></script>
+Version 0.0.1
+<h2 align="center"> t3a06-variables-by-Jacob.html</h2>
+<style>
+    body {
+    background-color:black;
+    margin:5px;
+    font:900;
+    color:whitesmoke;
+}
+button:hover{
+    background-color:grey;
+    transform:scale(1.05);
+    transition:ease-in-out;
+    cursor:grab;
+}
+button:active{
+    background-color:darkgray;
+    transform:scale(0.95);
+    transition:ease-out;
+}
+.button{
+    background-color:ghostwhite;
+    margin:2px;
+    font:bold;
+    width:100px;
+    height:70px;
+}
+</style>
+</head>
+<body>
+    <a href="">You Fix: Good reference to Variables in Javascript and other languages</a><br>
+    other Languages use: bool, int, float, char, string, int_8, int_16 etc<br>
+    
+    Note: Javascript does use var and let for local variables.<br>
+    For Global variables Mr. Ellis prefers to use tocument class="myVarName"
+
+
+        <h4>example input output code</h4>
+    <pre>
+        let myIn01 = document.getElementById('myText01').value
+        document.getElementById('myDiv01').innerHTML = myIn01
+    </pre>
+
+    <h4>Example working code</h4>
+
+    <input id="myText01" type="text" value="The dog " ><br>
+
+    <button value="Show Variable" class="button" onclick="{
+        let myIn01 = document.getElementById('myText01').value
+        document.getElementById('myDiv01').innerHTML = myIn01
+    }">Show Variable</button><br>
+
+<button value="Using no Variable" class="button" onclick="{
+    document.getElementById('myDiv01').innerHTML =
+    document.getElementById('myText01').value
+}">Using no Variable</button><br>
+
+<div id="myDiv01">...</div><br><br>
+
+<input id="myText02" type="text" value="change me"><br>
+<input id="myText03" type="text" value="to me"><br>
+<button value="change" class="button" onclick="{
+    document.getElementById('myText02').outerHTML = document.getElementById('myText03').value
+}">Change (1 time use)</button>
+</body>
