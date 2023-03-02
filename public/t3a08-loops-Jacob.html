@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+Version 0.0.1
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+<h2 align="center">t3a08-loops-by-Jacob</h2>
+
+<a href="https://www.w3schools.com/js/js_loop_for.asp">Good reference to Javascript Loops</a><br>
+<style>
+body{
+    background-color:goldenrod;
+    font:900;
+    margin:2px;
+}
+
+button:hover{
+    transition:ease-in-out;
+    transform:scale(1.05);
+    background-color:gray;
+}
+button:active{
+    transition:ease-in-out;
+    transform:scale(.95);
+    background-color:black;
+    color:whitesmoke;
+}
+</style>
+</head>
+<body>
+<h4>Example input output code</h4>
+<pre>
+
+</pre>
+
+<h4>Example working code</h4>
+
+Max loops: <input id="myNum01" type="number" value="4" ><br>
+
+<input type="button" value="Basic For loop with Decisions" onclick="{
+    document.getElementById('myDiv01').innerHTML =''
+    let myTemp = ''
+
+    let myMax = parseInt(document.getElementById('myNum01').value)
+
+    for (let myLoop = 0; myLoop < myMax; myLoop++){
+        if (myLoop*2>myMax){
+            myTemp += ' cool'
+        }
+
+        myTemp += 'Loop number: ' +myLoop + '<br>'
+    }
+    document.getElementById('myDiv01').innerHTML = myTemp
+}">
+
+
+
+<div id="myDiv01">...</div><br>
+</body>
