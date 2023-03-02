@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <h2 align="center">t3a08-Events-by-Jacob.html</h2>
+    <style>
+    body {
+        background-color:aliceblue;
+        margin:5px;
+        font:900;
+        color:lightslategray;
+    }
+    button:hover{
+        background-color:slategray;
+        transform:scale(1.05);
+        transition:ease-in-out;
+        cursor:grab;
+    }
+    button:active{
+        background-color:darkslategray;
+        transform:scale(0.95);
+        transition:ease-out;
+    }
+    .button{
+        background-color:ghostwhite;
+        margin:2px;
+        font:bold;
+        width:50px;
+        height:35px;
+    }</style>
+</head>
+<body>
+    <a href="https://way2tuorial.com/html/html5_events_handler_list.php">Good reference to Html Events</a><br>
+    Events are HTML code that activates Javascript code
+
+    <h4>Example Functions code</h4>
+    <pre>
+        &lt input type=button value="Example onClick" onClick="{
+            alert('hi')
+        }" &gt
+    </pre>
+
+    <h4>Example working code</h4>
+
+
+    <input type="text" id="myText01" value="3"><br>
+    <button value="Example onClick" onClick="{
+        document.getElementById('myDiv01').innerHTML = document.getElementById('myText01').value
+    }">Example onClick</button>
+    <div id="myDiv01">...</div>
+    <b id="myB01" onMouseOut="{
+        document.getElementById('myB01').innerHTML = 'This is bold'
+    }"      onMouseOver="{
+        document.getElementById('myB01').innerHTML = 'This is cool'
+    }"      >This is bold</b>
+
+
+    <br>
+    <img src="https://m.media-amazon.com/images/I/61Rjq4RxetL._AC_SL1500_.jpg" id="myImg01" width="200px" onMouseenter="{
+        document.getElementById('myImg01').src = 'https://m.media-amazon.com/images/I/610xm8ZoxvL._AC_SL1500_.jpg'
+    }"      onMouseOut="{
+    document.getElementById('myImg01').src = 'https://imageproxy.ifunny.co/crop:square,resize:320x,quality:90x75/images/05a5e30cab83997364c2bc7e152c11e09aaf08936873fd181fb4b7cf49b409c2_3.jpg'
+    }"><br>
+
+    You do at least 8 other events:<br>
+    onClick, onDbClick, onChange, onBlue, onFocus, onMouseMove, onTouch, onKeyDown, onKeyPress, onDragStart, onTouchStart, onTouchEnd, onTouchMove<br>
+
+    <iframe src="t3a03-tank-parent-scenery-by-Jacob0001-0320.mp4" id="video" onmouseover="{
+        document.getElementById('video').src = 'Dies of cringe.mp4'
+    }" onMouseOut="{
+        document.getElementById('video').src = 't3a03-tank-parent-scenery-by-Jacob0001-0320.mp4'
+    }"></iframe>
+</body>
