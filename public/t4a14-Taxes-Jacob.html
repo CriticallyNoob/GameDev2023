@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        body{
+            background-color:cornflowerblue;
+        }
+        button:hover{
+            transform:scale(1.05);
+            transition:ease-in-out;
+            background-color:gray;
+        }
+        button:active{
+            transform:scale(.95);
+            transition:ease-in-out;
+            background-color:gray;
+        }
+    </style>
+    <script>
+        function TaxAmountDay(){
+            let Wage = document.getElementById('myWage').value;
+    let Hours = document.getElementById('myHours').value;
+    let Tax = document.getElementById('myTax').value;
+    document.getElementById('GovAmount').innerHTML = 'You will be taxed: $' + (Wage * Hours) * Tax;
+        }
+        function TakeAmountDay(){
+            let Wage = document.getElementById('myWage').value;
+    let Hours = document.getElementById('myHours').value;
+    let Tax = document.getElementById('myTax').value;
+    document.getElementById('YourAmount').innerHTML = 'You will be take home: $' + (Wage * Hours - ((Wage * Hours) * Tax));
+        }
+        function TaxAmountMonth(){
+            let Wage = document.getElementById('myWage').value;
+    let Hours = document.getElementById('myHours').value;
+    let Tax = document.getElementById('myTax').value;
+    document.getElementById('GovAmount').innerHTML = 'You will be taxed: $' + ((Wage * Hours) * Tax)*20;
+        }
+        function TakeAmountMonth(){
+            let Wage = document.getElementById('myWage').value;
+    let Hours = document.getElementById('myHours').value;
+    let Tax = document.getElementById('myTax').value;
+    document.getElementById('YourAmount').innerHTML = 'You will be take home: $' + (Wage * Hours - ((Wage * Hours) * Tax))*20;
+        }
+        function TaxAmountYear(){
+            let Wage = document.getElementById('myWage').value;
+    let Hours = document.getElementById('myHours').value;
+    let Tax = document.getElementById('myTax').value;
+    document.getElementById('GovAmount').innerHTML = 'You will be taxed: $' + ((Wage * Hours) * Tax)*240;
+        }
+        function TakeAmountYear(){
+            let Wage = document.getElementById('myWage').value;
+    let Hours = document.getElementById('myHours').value;
+    let Tax = document.getElementById('myTax').value;
+    document.getElementById('YourAmount').innerHTML = 'You will be take home: $' + (Wage * Hours - ((Wage * Hours) * Tax))*240;
+        }
+    </script>
+    Version 0.0.1
+    <h2>t4a14-tax-Jacob.html</h2>
+</head>
+<body>
+    Wage ($/hr)<input type="number" id="myWage" value="15"><br>
+    Hours<input type="number" id="myHours" value="8"><br>
+    Tax (".")<input type="number" id="myTax" value=".3"><br>
+
+<button onclick="{
+    TaxAmountDay()
+}">Tax per day</button>
+
+<button onclick="{
+    TakeAmountDay()
+}">What you take home per day</button><br>
+
+<button onclick="{
+    TaxAmountMonth()
+}">Tax per month</button>
+
+<button onclick="{
+    TakeAmountMonth()
+}">What you take home per month</button><br>
+
+<button onclick="{
+    TaxAmountYear()
+}">Tax per Year</button>
+
+<button onclick="{
+    TakeAmountYear()
+}">What you take home per Year</button><br>
+    <div id="GovAmount">...</div>
+    <div id="YourAmount">...</div>
+</body>
