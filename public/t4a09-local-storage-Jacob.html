@@ -22,3 +22,15 @@ Text example: <input id="myText1" type=text size=70 value="" placeholder="Write 
 <input type="button" value="Retrieve Text" onClick="{
    document.getElementById('myText1').value = localStorage.getItem('myStoredText')
 }"> 
+
+<textarea id="myText2" placeholder="Input code here"></textarea>
+
+<button value="Store code" onclick="{
+localStorage.setItem('myStoredCode', document.getElementById('myText2').value)
+alert(document.getElementById('myText2').value + ' \nHas been stored')
+document.getElementById('myText2').value = ''
+}">store code</button>
+
+<button> value="Retrieve Text" onClick="{
+   document.getElementById('myText1').value = localStorage.getItem('myStoredText')
+   </button>

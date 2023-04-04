@@ -1,4 +1,11 @@
-<script> let mySound1 = new Audio('Yeh.m4a') </script>
+<script>
+ let mySound1 = new Audio('Yeh.m4a') 
+
+ function sound(){
+     var snd = new Audio('Coin.mp3')
+     snd.play()
+ }
+</script>
  
 
 
@@ -12,3 +19,5 @@ Footer
 © 2023 GitHub, Inc.
 Footer navigation
 Terms
+
+<button onclick="sound()">Play a coin sound</button>
