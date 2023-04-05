@@ -56,10 +56,41 @@ You use loops and variables to make fast fancy drawings <br><br>
    myContext.clearRect(0, 0, myCanvas.width, myCanvas.height);
 }"><br><br>
 
+<button onclick="drawStickman()">Draw Stickman</button><br><br>
+
 <canvas id="myCoolTag" width="1000" height="600" style="border:1px solid #000000;"></canvas>
 
 <script>
    // set up global variables
    let myCanvas=document.getElementById('myCoolTag');
    let myContext=myCanvas.getContext('2d');
+
+   function drawStickman() {
+    const canvas = document.getElementById('myCoolTag');
+    const context = canvas.getContext('2d');
+    
+    // Draw head
+    context.beginPath();
+    context.arc(100, 50, 20, 0, Math.PI * 2, false);
+    context.stroke();
+    
+    // Draw body
+    context.beginPath();
+    context.moveTo(100, 70);
+    context.lineTo(100, 120);
+    context.stroke();
+    
+    // Draw arms
+    context.beginPath();
+    context.moveTo(80, 90);
+    context.lineTo(120, 90);
+    context.stroke();
+    
+    // Draw legs
+    context.beginPath();
+    context.moveTo(90, 150);
+    context.lineTo(100, 120);
+    context.lineTo(110, 150);
+    context.stroke();
+  }
 </script>
