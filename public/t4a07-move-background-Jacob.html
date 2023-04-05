@@ -1,27 +1,62 @@
-Version 0.0.4
+Version 0.0.2
 <body id="myBody" style="background-repeat:repeat; background-size: 80%" background="20230218_131227.jpg">
-<script>
-   let myGlobalX = 0
-   let myClock
-</script>
-
-<input id="myButton01" type=button value="background move left" onclick="{
-  myTemp = '100px 0px'
-  myGlobalX -= 5
-  myTemp =  myGlobalX + 'px 0px'
-  document.getElementById('myBody').style.backgroundPosition =myTemp
-}">
-
-<input type=button value="Auto Background Left" onclick="{
-  clearInterval(myClock)
-  myClock = setInterval(function(){
-     document.getElementById('myButton01').click() 
-  }, 100)
-    
-}">
-
-<input type=button value="Image Right" onclick="{
-  document.getElementById('myImage01').style.left = parseInt(document.getElementById('myImage01').style.left) + 10 + 'px'
-}"><br><br>
-
-<iframe id="myImage01" style="position:relative; top:0px; left:0px;" src="t3a07-Armatures-by-Jacob.mp4"></iframe>
+  <script>
+     let myGlobalX = 0
+     let myClock
+  </script>
+  
+  <input id="myButton01" type=button value="background move left" onclick="{
+    myTemp = '100px 0px'
+    myGlobalX -= 5
+    myTemp =  myGlobalX + 'px 0px'
+    document.getElementById('myBody').style.backgroundPosition =myTemp
+  }">
+  
+  <input type=button value="Auto Background Left" onclick="{
+    clearInterval(myClock)
+    myClock = setInterval(function(){
+       document.getElementById('myButton01').click() 
+    }, 100)  
+  }">
+  
+  <input type=button value="Stop Background" onclick="{
+    clearInterval(myClock)
+  }">
+  
+  <input type=button value="Image Left" onclick="{
+    document.getElementById('myImage01').style.left = parseInt(document.getElementById('myImage01').style.left) - 10 + 'px'
+  }">
+  
+  <input type=button value="Image Up" onclick="{
+    document.getElementById('myImage01').style.top = parseInt(document.getElementById('myImage01').style.top) - 10 + 'px'
+  }">
+  
+  <input type=button value="Image Down" onclick="{
+    document.getElementById('myImage01').style.top = parseInt(document.getElementById('myImage01').style.top) + 10 + 'px'
+  }">
+  
+  <input type=button value="Image Right" onclick="{
+    document.getElementById('myImage01').style.left = parseInt(document.getElementById('myImage01').style.left) + 10 + 'px'
+  }"><br><br>
+  
+  <iframe id="myImage01" style="position:relative; top:0px; left:0px;" src="t3a07-Armatures-by-Jacob.mp4"></iframe>
+  
+  <script>
+    // Move image using WASD keys
+    window.addEventListener("keydown", function(event) {
+      switch (event.key) {
+        case "a":
+          document.getElementById("myImage01").style.left = parseInt(document.getElementById("myImage01").style.left) - 10 + 'px';
+          break;
+        case "d":
+          document.getElementById("myImage01").style.left = parseInt(document.getElementById("myImage01").style.left) + 10 + 'px';
+          break;
+        case "w":
+          document.getElementById("myImage01").style.top = parseInt(document.getElementById("myImage01").style.top) - 10 + 'px';
+          break;
+        case "s":
+          document.getElementById("myImage01").style.top = parseInt(document.getElementById("myImage01").style.top) + 10 + 'px';
+          break;
+      }
+    });
+  </script>
