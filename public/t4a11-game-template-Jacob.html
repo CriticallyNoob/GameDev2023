@@ -82,3 +82,23 @@ function myCheckHit(){
   document.getElementById('myImg01').style.top = parseInt(document.getElementById('myImg01').style.top) + -10 + 'px'
   myCheckHit()     // checks for all collisions
 }"><br><br>
+
+<script>
+  // Move image using WASD keys
+  window.addEventListener("keydown", function(event) {
+    switch (event.key) {
+      case "a":
+        document.getElementById("myImg01").style.left = parseInt(document.getElementById("myImg01").style.left) - 10 + 'px';
+        break;
+      case "d":
+        document.getElementById("myImg01").style.left = parseInt(document.getElementById("myImg01").style.left) + 10 + 'px';
+        break;
+      case "w":
+        document.getElementById("myImg01").style.top = parseInt(document.getElementById("myImg01").style.top) - 10 + 'px';
+        break;
+      case "s":
+        document.getElementById("myImg01").style.top = parseInt(document.getElementById("myImg01").style.top) + 10 + 'px';
+        break;
+    }
+  });
+</script>
