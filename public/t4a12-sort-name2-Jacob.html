@@ -11,7 +11,11 @@ Version 0.0.3
   for (let myLoop = 0; myLoop < myMax; myLoop++){
     myCards[myLoop] = Math.floor(Math.random() * 10);
   }
-  document.getElementById('myDiv01').innerHTML = myLoop + ' = ' + myCards[myLoop] + '<br>';
+  let myTemp = '';
+  for (let myLoop = 0; myLoop < myMax; myLoop++){
+    myTemp += myLoop + ' = ' + myCards[myLoop] + '<br>';
+  }
+  document.getElementById('myDiv01').innerHTML = myTemp;
 }">
 
 <input type="button" value="Show" onclick="{
