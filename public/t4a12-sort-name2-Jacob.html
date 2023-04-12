@@ -56,4 +56,23 @@ Version 0.0.3
   document.getElementById('myDiv01').innerHTML = myTemp;
 }">
 
+<button onclick="{
+  let myTemp = '';
+  let sorted = false;
+  while(!sorted){
+    sorted = true;
+  for (let myLoop = 0; myLoop < myMax; myLoop++){
+  if (myCards[myLoop] > myCards[myLoop+1]){
+    myTemp = myCards[myLoop];
+    myCards[myLoop] = myCards[myLoop+1];
+    myCards[myLoop+1] = myTemp;
+    sorted = false;
+  }
+}
+}
+  for (let myLoop = 0; myLoop < myMax; myLoop++){
+    myTemp += myLoop + ' = ' + myCards[myLoop] + '<br>';
+  }
+  document.getElementById('myDiv01').innerHTML = myTemp;
+}">Sort (Hard way)</button>
 <div id="myDiv01"></div>
