@@ -58,12 +58,100 @@ You use loops and variables to make fast fancy drawings <br><br>
 
 <button onclick="drawStickman()">Draw Stickman</button><br><br>
 
+<input type="button" value="Create Blocky Game Background" onclick="{
+   // get canvas and context
+   const canvas = document.getElementById('myCoolTag');
+   const context = canvas.getContext('2d');
+   
+   // draw blue sky
+   context.fillStyle = '#87CEEB'; // sky blue color
+   context.fillRect(0, 0, canvas.width, canvas.height);
+   
+   // draw mountain in the background
+   context.fillStyle = '#696969'; // dim gray color
+   context.beginPath();
+   context.moveTo(200, 400);
+   context.lineTo(500, 100);
+   context.lineTo(800, 400);
+   context.closePath();
+   context.fill();
+   
+   // draw grassy hills in the foreground
+   context.fillStyle = '#9ACD32'; // yellow green color
+   context.beginPath();
+   context.moveTo(0, 500);
+   context.lineTo(0, 600);
+   context.lineTo(1000, 600);
+   context.lineTo(1000, 500);
+   context.closePath();
+   context.fill();
+   context.beginPath();
+   context.moveTo(0, 500);
+   context.lineTo(200, 200);
+   context.lineTo(500, 400);
+   context.lineTo(800, 200);
+   context.lineTo(1000, 500);
+   context.closePath();
+   context.fill();
+   
+ }"><br><br>
+ <input type=button value="Random Blocky Game Background" onclick="generateRandomBackground()"><br><br>
+
+
 <canvas id="myCoolTag" width="1000" height="600" style="border:1px solid #000000;"></canvas>
 
 <script>
    // set up global variables
    let myCanvas=document.getElementById('myCoolTag');
    let myContext=myCanvas.getContext('2d');
+
+ // define a function to generate a random blocky game background
+ function generateRandomBackground() {
+       // generate random colors for the sky, mountain, and grass
+       let skyColor = getRandomColor();
+       let mountainColor = getRandomColor();
+       let grassColor = getRandomColor();
+       
+       // clear the canvas
+       myContext.clearRect(0, 0, myCanvas.width, myCanvas.height);
+       
+       // draw the sky
+       myContext.fillStyle = skyColor;
+       myContext.fillRect(0, 0, myCanvas.width, myCanvas.height);
+       
+       // draw the mountain
+       myContext.fillStyle = mountainColor;
+       myContext.beginPath();
+       let mountainHeight = getRandomNumber(100, 200);
+       myContext.moveTo(0, myCanvas.height - mountainHeight);
+       for (let i = 0; i <= myCanvas.width; i++) {
+           let pointY = myCanvas.height - mountainHeight + Math.sin(i / myCanvas.width * Math.PI * 2) * 50;
+           myContext.lineTo(i, pointY);
+       }
+       myContext.lineTo(myCanvas.width, myCanvas.height);
+       myContext.lineTo(0, myCanvas.height);
+       myContext.closePath();
+       myContext.fill();
+       
+       // draw the grass
+       myContext.fillStyle = grassColor;
+       myContext.fillRect(0, myCanvas.height - 50, myCanvas.width, 50);
+   }
+   
+   // define a function to get a random color
+   function getRandomColor() {
+       let letters = '0123456789ABCDEF';
+       let color = '#';
+       for (let i = 0; i < 6; i++) {
+           color += letters[Math.floor(Math.random() * 16)];
+       }
+       return color;
+   }
+   
+   // define a function to get a random number between min and max
+   function getRandomNumber(min, max) {
+       return Math.floor(Math.random() * (max - min + 1) + min);
+   }
 
    function drawStickman() {
     const canvas = document.getElementById('myCoolTag');
