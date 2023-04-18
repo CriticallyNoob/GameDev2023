@@ -68,15 +68,19 @@ function myCheckHit(){
     switch (event.key) {
       case "a":
         document.getElementById("myImg01").style.left = parseInt(document.getElementById("myImg01").style.left) - 10 + 'px';
+        myCheckHit();
         break;
       case "d":
         document.getElementById("myImg01").style.left = parseInt(document.getElementById("myImg01").style.left) + 10 + 'px';
+        myCheckHit();
         break;
       case "w":
         document.getElementById("myImg01").style.top = parseInt(document.getElementById("myImg01").style.top) - 10 + 'px';
+        myCheckHit();
         break;
       case "s":
         document.getElementById("myImg01").style.top = parseInt(document.getElementById("myImg01").style.top) + 10 + 'px';
+        myCheckHit();
         break;
     }
   });
