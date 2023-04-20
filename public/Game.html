@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gravity Collision Demo</title>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="800" height="600"></canvas>
+
+    <script>
+      // Set up the canvas and context
+      const canvas = document.getElementById("myCanvas");
+      const context = canvas.getContext("2d");
+
+      // Load the image and collision object
+      const myImage = new Image();
+      myImage.src = "20230218_131227.jpg";
+      myImage.addEventListener("load", () => {
+        // Once the image has loaded, set up the collision object
+        const myCollision = new Image();
+        myCollision.src = "Dies of cringe.mp4";
+        myCollision.addEventListener("load", () => {
+          // Once the collision object has loaded, set up the game loop
+
+          // Set up the image position and velocity
+          let imagePos = { x: 0, y: 0 };
+          let imageVel = { x: 0, y: 0 };
+
+          // Set up the gravity constant
+          const gravity = 0.5;
+
+          // Start the game loop
+          function gameLoop() {
+            // Apply gravity to the image velocity
+            imageVel.y += gravity;
+
+            // Check for collision with the object
+        if (
+          imagePos.x + myImage.width > canvas.width / 2 - myCollision.width / 2 &&
+          imagePos.x < canvas.width / 2 + myCollision.width / 2 &&
+          imagePos.y + myImage.height > canvas.height - myCollision.height
+        ) {
+          // Stop the image when it collides with the object
+          imageVel = { x: 0, y: 0 };
+           imagePos.y = canvas.height - myCollision.height - myImage.height;
+    }
+
+            // Clear the canvas and draw the image and object
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(myImage, imagePos.x, imagePos.y);
+            context.drawImage(myCollision, canvas.width / 2 - myCollision.width / 2, canvas.height / 2 - myCollision.height / 2);
+
+            // Request the next animation frame
+            requestAnimationFrame(gameLoop);
+          }
+
+          // Start the game loop
+          requestAnimationFrame(gameLoop);
+        });
+      });
+    </script>
+  </body>
+</html>
