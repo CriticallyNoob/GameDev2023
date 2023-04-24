@@ -1,9 +1,20 @@
-<body id="myBody" style="background-repeat:repeat; background-size: 80%" background="myBackground01.jpg">
+<body id="myBody" style="background-repeat:repeat; background-size: 80%" background="hexagon.jpg">
 
     <h1 align=center><font color=red>T4A04 Maze by Fred</font></h1>
     
     
     <script>
+       window.onload = function background(){
+        clearInterval(myClock)
+      let myTemp = '100px 0px'
+      myClock = setInterval(function(){
+          myGlobalX -= 5
+          myTemp =  myGlobalX + 'px 0px'
+          document.getElementById('myBody').style.backgroundPosition = myTemp
+      }, 100)
+       };
+        
+    
     
        // global variables here
        let myGlobalX = 0
@@ -31,23 +42,58 @@
     
     function myCheckHit(){
     
-       if ( myHitOther('myImg01','myImg02') ){
-           //alert('you lose')
-          document.getElementById('myImg01').style.left = '20px'
+       if ( myHitOther('character','myImg03') ){
+           alert('you lose')
+          document.getElementById('character').style.left = '20px'
        }   
        
-       if ( myHitOther('myImg01','myImg03') ){
-           //alert('you lose')
-          document.getElementById('myImg01').style.left = '20px'
-       }   
+       if ( myHitOther('character','myImg04') ){
+           alert('you lose')
+          document.getElementById('character').style.left = '20px'
+       } 
+    
+       if ( myHitOther('character','myImg05') ){
+           alert('you lose')
+          document.getElementById('character').style.left = '20px'
+       }
+
+       if ( myHitOther('character','myImg06') ){
+           alert('you lose')
+          document.getElementById('character').style.left = '20px'
+       }
+
+       if ( myHitOther('character','myImg07') ){
+           alert('you lose')
+          document.getElementById('character').style.left = '20px'
+       }
+
+       if ( myHitOther('character','myImg08') ){
+           alert('you lose')
+          document.getElementById('character').style.left = '20px'
+       }
+
+       if ( myHitOther('character','myImg09') ){
+           alert('you lose')
+          document.getElementById('character').style.left = '20px'
+       }
+
+       if ( myHitOther('character','myImg10') ){
+           alert('you lose')
+          document.getElementById('character').style.left = '20px'
+       }
+
+       if ( myHitOther('character','myImg11') ){
+           alert('you lose')
+          document.getElementById('character').style.left = '20px'
+       }
        
     
     
        // YOU WIN and go to next level!
     
-       if ( myHitOther('myImg01','myImg04') ){
+       if ( myHitOther('character','goal') ){
            alert('You Win, now go to the next level')
-          document.getElementById('myImg01').style.left = '20px'
+          document.getElementById('character').style.left = '20px'
           location = 'https://www.google.ca'
        }
     
@@ -55,43 +101,45 @@
     
     }
     
-    
     </script>
     
+
+ <!--character and goal-->
+    <img id="character" src="20230218_131227.jpg"  style="position:absolute; width:100px; height:80px; left: 50px; top:190px;">
+    <img id="goal" src="20230218_131227.jpg"  style="position:absolute; width:100px; height:80px; left:800px; top:400px;">
     
-    
-    
-    <input type=button value="Auto Background Left" onclick="{
-      clearInterval(myClock)
-      let myTemp = '100px 0px'
-      myClock = setInterval(function(){
-          myGlobalX -= 5
-          myTemp =  myGlobalX + 'px 0px'
-          document.getElementById('myBody').style.backgroundPosition = myTemp
-      }, 100)
-        
-    }">
- 
-    <img id="myImg01" src="myImgNew.jpg"  style="position:absolute; width:100px; height:80px; left: 50px; top:190px;">
-    <img id="myImg02" src="myImgNew.jpg"  style="position:absolute; width:10px; height:200px; left:350px; top:90px;">
-    <img id="myImg03" src="myImgNew.jpg"  style="position:absolute; width:200px; height:10px; left:500px; top:400px;">
-    <img id="myImg04" src="myImgNew.jpg"  style="position:absolute; width:100px; height:80px; left:800px; top:400px;">
+ <!--Wall Collisions-->
+ <img id="myImg03" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:350px; top:0px;">
+ <img id="myImg04" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:350px; top:200px;">
+
+ <img id="myImg05" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:500px; top:400px;">
+ <img id="myImg06" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:350px; top:400px;">
+    <!--Bottom Collisions-->
+    <img id="myImg07" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:500px; top:550px;">
+    <img id="myImg08" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:500px; top:550px;">
+    <img id="myImg09" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left: 300px; top:550px;">
+    <img id="myImg10" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left: 100px; top:550px;">
+    <img id="myImg11" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left: 0px; top:550px;">
 
     <script>
         // Move image using WASD keys
         window.addEventListener("keydown", function(event) {
           switch (event.key) {
             case "a":
-              document.getElementById("myImage01").style.left = parseInt(document.getElementById("myImage01").style.left) - 10 + 'px';
+              document.getElementById("character").style.left = parseInt(document.getElementById("character").style.left) - 10 + 'px';
+              myCheckHit();
               break;
             case "d":
-              document.getElementById("myImage01").style.left = parseInt(document.getElementById("myImage01").style.left) + 10 + 'px';
+              document.getElementById("character").style.left = parseInt(document.getElementById("character").style.left) + 10 + 'px';
+              myCheckHit();
               break;
             case "w":
-              document.getElementById("myImage01").style.top = parseInt(document.getElementById("myImage01").style.top) - 10 + 'px';
+              document.getElementById("character").style.top = parseInt(document.getElementById("character").style.top) - 10 + 'px';
+              myCheckHit();
               break;
             case "s":
-              document.getElementById("myImage01").style.top = parseInt(document.getElementById("myImage01").style.top) + 10 + 'px';
+              document.getElementById("character").style.top = parseInt(document.getElementById("character").style.top) + 10 + 'px';
+              myCheckHit();
               break;
           }
         });
