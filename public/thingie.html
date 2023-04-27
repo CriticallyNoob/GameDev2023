@@ -1,1 +1,69 @@
-hello there
+<!-- character and goal -->
+<img id="character" src="20230218_131227.jpg"  style="position:absolute; width:100px; height:80px; left:50px; top:190px;">
+<img id="goal" src="20230218_131227.jpg"  style="position:absolute; width:100px; height:80px; left:1450px; top:650px;">
+
+<!-- Wall Collisions -->
+<img id="myImg03" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:350px; top:0px;">
+<img id="myImg04" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:350px; top:200px;">
+<img id="myImg13" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:700px; top:200px;">
+<!-- more wall collisions here -->
+
+<script>
+    window.onload = function background(){
+        clearInterval(myClock);
+        let myTemp = '100px 0px';
+        myClock = setInterval(function(){
+            myGlobalX -= 5;
+            myTemp =  myGlobalX + 'px 0px';
+            document.getElementById('myBody').style.backgroundPosition = myTemp;
+        }, 100);
+    };
+        
+    // global variables here
+    let myGlobalX = 0;
+    let myClock;
+
+    // global functions here
+    function myHitOther(my1,my2){
+        left1   = parseInt(document.getElementById(my1).style.left);
+        right1  = left1 + parseInt(document.getElementById(my1).style.width);
+        top1    = parseInt(document.getElementById(my1).style.top);   
+        bottom1 = top1   + parseInt(document.getElementById(my1).style.height);
+        left2   = parseInt(document.getElementById(my2).style.left);
+        right2  = left2 + parseInt(document.getElementById(my2).style.width);
+        top2    = parseInt(document.getElementById(my2).style.top);   
+        bottom2 = top2   + parseInt(document.getElementById(my2).style.height);
+        if ((right1  >=  left2  ) &&      	   
+            (bottom1 >=  top2   ) &&
+            (left1   <=  right2 ) &&
+            (top1    <=  bottom2) ){
+            return true;
+        }
+    }
+    
+    function myCheckHit(){
+        if ( myHitOther('character','myImg03') ||
+             myHitOther('character','myImg04') ||
+             myHitOther('character','myImg13') ||
+             // add more wall collisions here
+             ){
+            alert('you lose');
+            window.location.reload();
+        }   
+           
+        // YOU WIN and go to next level!
+        if ( myHitOther('character','goal') ){
+            alert('You Win, now go to the next level');
+            document.getElementById('character').style.left = '20px';
+            location = 'https://www.google.ca';
+        }
+        
+        // restrict character image within screen boundaries
+        let characterImg = document.getElementById('character');
+        let maxX = window.innerWidth - characterImg.clientWidth;
+        let maxY = window.innerHeight - characterImg.clientHeight;
+        let currentX = parseInt(characterImg.style.left);
+        let currentY = parseInt(characterImg.style.top);
+        
+        if (currentX < 0) {
+
