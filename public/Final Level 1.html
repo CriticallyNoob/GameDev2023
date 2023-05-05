@@ -1,6 +1,4 @@
 <body id="myBody" style="background-repeat:repeat; background-size: 80%" background="gourd.gif">
-
-    <h1 align=center><font color=red>T4A04 Maze by Fred</font></h1>
     
     
     <script>
@@ -141,6 +139,11 @@
            alert('you lose')
            window.location.reload()
        }
+
+       if ( myHitOther('character','myEnemy01') ){
+           alert('you died, L')
+           window.location.reload()
+       }
        
     
     
@@ -151,8 +154,6 @@
           document.getElementById('character').style.left = '20px'
           location = 'https://www.google.ca'
        }
-    
-       // more if statements here
     
     }
     
@@ -187,6 +188,8 @@
     <img id="myImg18" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:900px; top:200px;">
     <img id="myImg19" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:1100px; top:200px;">
 
+    <!--Enemy-->
+<img id="myEnemy01" src="I-am-once-again-asking-for-your-financial-support.gif" style="position:absolute; width:100px; height:80px; left:710px; top:120px;">
     <script>
         // Move image using WASD keys
         window.addEventListener("keydown", function(event) {
@@ -209,4 +212,43 @@
               break;
           }
         });
+      </script>
+      <script>
+// Get the image elements
+// Get the image elements
+const myImg = document.getElementById("myImg13");
+const myEnemy = document.getElementById("myEnemy01");
+
+// Set the initial position and speed of the images
+let myEnemyX = window.innerWidth - myEnemy.width;
+let speed = 5;
+let myEnemyDirection = -1; // 1 = right, -1 = left
+
+// Move the enemy image and check for collisions
+function moveEnemy() {
+  // Move myEnemy
+  myEnemyX += speed * myEnemyDirection;
+
+  // Check for collisions with myImg
+  if (myEnemyX + myEnemy.width >= myImg.offsetLeft && myEnemyX <= myImg.offsetLeft + myImg.width) {
+    myEnemyDirection *= -1;
+  }
+
+  // Check for collisions with the edges of the window
+  if (myEnemyX + myEnemy.width >= window.innerWidth || myEnemyX <= 0) {
+    myEnemyDirection *= -1;
+  }
+
+  // Set the new position of the enemy image
+  myEnemy.style.left = myEnemyX + "px";
+}
+
+// Call the moveEnemy function every frame
+function gameLoop() {
+  moveEnemy();
+  requestAnimationFrame(gameLoop);
+}
+
+// Start the game loop
+gameLoop();
       </script>
