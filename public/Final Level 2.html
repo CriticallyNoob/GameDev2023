@@ -139,6 +139,10 @@
            alert('you died')
            window.location.reload()
        }
+       if ( myHitOther('character','myEnemy02') ){
+           alert('you died')
+           window.location.reload()
+       }
        
     
     
@@ -147,7 +151,7 @@
        if ( myHitOther('character','goal') ){
            alert('You Win, now go to the next level')
           document.getElementById('character').style.left = '20px'
-          location = 'Final Level 2.html'
+          location = 'https://www.google.ca'
        }
     
     }
@@ -161,8 +165,14 @@
     <img id="goal" src="image.png"  style="position:absolute; width:100px; height:80px; left: 1450px; top:650px;">
     
  <!--Wall Collisions-->
- <img id="myImg03" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:350px; top:0px;">
- <img id="myImg04" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:350px; top:200px;">
+ <img id="myImg03" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:200px; top:0px;">
+ <img id="myImg04" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left: 200px; top:200px;">
+ <img id="myImg05" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:200px; top:400px;">
+ <img id="myImg07" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:550px; top:200px;">
+ <img id="myImg08" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:550px; top:400px;">
+ <img id="myImg09" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left: 550px; top:600px;">
+ <img id="myImg10" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left: 350px; top:200px;">
+ <img id="myImg11" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left: 350px; top:400px;">
  <img id="myImg12" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:700px; top:0px;">
  <img id="myImg13" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:700px; top:200px;">
  <img id="myImg14" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:900px; top:200px;">
@@ -171,20 +181,18 @@
  <img id="myImg20" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:1300px; top:400px;">
  <img id="myImg21" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:1300px; top:600px;">
 
- <img id="myImg05" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:500px; top:400px;">
- <img id="myImg06" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:350px; top:400px;">
+ 
+ <img id="myImg06" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:350px; top:200px;">
+ <img id="myImg22" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:350px; top:600px;">
     <!--Bottom Collisions-->
-    <img id="myImg07" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:500px; top:550px;">
-    <img id="myImg08" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:500px; top:550px;">
-    <img id="myImg09" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left: 300px; top:550px;">
-    <img id="myImg10" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left: 100px; top:550px;">
-    <img id="myImg11" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left: 0px; top:550px;">
+    
     <img id="myImg16" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:700px; top:550px;">
     <img id="myImg17" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:900px; top:200px;">
     <img id="myImg18" src="metal texture.jpg"  style="position:absolute; width:200px; height:10px; left:1100px; top:200px;">
 
     <!--Enemy-->
 <img id="myEnemy01" src="I-am-once-again-asking-for-your-financial-support.gif" style="position:absolute; width:100px; height:80px; left:710px; top:120px;">
+<img id="myEnemy02" src="I-am-once-again-asking-for-your-financial-support.gif" style="position:absolute; width:100px; height:80px; left:0px; top:650px;">
     <script>
         // Move image using WASD keys
         window.addEventListener("keydown", function(event) {
@@ -209,41 +217,54 @@
         });
       </script>
       <script>
-// Get the image elements
-// Get the image elements
 const myImg = document.getElementById("myImg13");
-const myEnemy = document.getElementById("myEnemy01");
+const myEnemy01 = document.getElementById("myEnemy01");
+const myEnemy02 = document.getElementById("myEnemy02");
+const myImage09 = document.getElementById("myImg09");
 
-// Set the initial position and speed of the images
-let myEnemyX = window.innerWidth - myEnemy.width;
-let speed = 5;
-let myEnemyDirection = -1; // 1 = right, -1 = left
+let myEnemy01X = window.innerWidth - myEnemy01.width;
+let myEnemy02X = 0;
+let speed = 2;
+let myEnemy01Direction = -1;
+let myEnemy02Direction = 1;
 
-// Move the enemy image and check for collisions
-function moveEnemy() {
-  // Move myEnemy
-  myEnemyX += speed * myEnemyDirection;
+function moveEnemies() {
+  myEnemy01X += speed * myEnemy01Direction;
 
-  // Check for collisions with myImg
-  if (myEnemyX + myEnemy.width >= myImg.offsetLeft && myEnemyX <= myImg.offsetLeft + myImg.width) {
-    myEnemyDirection *= -1;
+  if (myEnemy01X + myEnemy01.width >= myImg.offsetLeft && myEnemy01X <= myImg.offsetLeft + myImg.width) {
+    myEnemy01Direction *= -1;
   }
 
-  // Check for collisions with the edges of the window
-  if (myEnemyX + myEnemy.width >= window.innerWidth || myEnemyX <= 0) {
-    myEnemyDirection *= -1;
+  if (myEnemy01X + myEnemy01.width >= window.innerWidth || myEnemy01X <= 0) {
+    myEnemy01Direction *= -1;
   }
 
-  // Set the new position of the enemy image
-  myEnemy.style.left = myEnemyX + "px";
+  myEnemy01.style.left = myEnemy01X + "px";
+
+  myEnemy02X += speed * myEnemy02Direction;
+
+  if (myEnemy02X + myEnemy02.width >= myImg.offsetLeft && myEnemy02X <= myImg.offsetLeft + myImg.width) {
+    myEnemy02Direction *= -1;
+  }
+
+  if (myEnemy02X + myEnemy02.width >= window.innerWidth || myEnemy02X <= 0) {
+    myEnemy02Direction *= -1;
+  }
+
+  // Check for collisions with myImage09
+  if (myEnemy02X + myEnemy02.width >= myImage09.offsetLeft && myEnemy02X <= myImage09.offsetLeft + myImage09.width) {
+    myEnemy02Direction *= -1;
+  }
+
+  myEnemy02.style.left = myEnemy02X + "px";
 }
 
-// Call the moveEnemy function every frame
 function gameLoop() {
-  moveEnemy();
+  moveEnemies();
   requestAnimationFrame(gameLoop);
 }
 
-// Start the game loop
 gameLoop();
+
       </script>
+      
