@@ -184,13 +184,20 @@
        // YOU WIN and go to next level!
     
        if ( myHitOther('character','goal') ){
-           alert('You Win, now go to the next level')
+           alert('You Win!')
           document.getElementById('character').style.left = '20px'
           location = 'Final Level Congratulations.html'
        }
     
-    }
+  
+      //Fake win
+      if ( myHitOther('character','fakeGoal') ){
+           alert('You Win, I think?')
+          document.getElementById('character').style.left = '20px'
+          location = 'Final Level Fake.html'
+       }
     
+      }
 
     </script>
     
@@ -198,6 +205,7 @@
  <!--character and goal-->
     <img id="character" src="20230218_131227.jpg"  style="position:absolute; width:100px; height:80px; left: 50px; top:190px;">
     <img id="goal" src="image.png"  style="position:absolute; width:100px; height:80px; left: 1450px; top:650px;">
+    <img id="fakeGoal" src="image.png" style="position:absolute; width:100px; height:80px; left: 1050px; top:480px; transform:rotate(180deg);">
     
  <!--Wall Collisions-->
  <img id="myImg03" src="metal texture.jpg"  style="position:absolute; width:10px; height:200px; left:200px; top:0px;">
