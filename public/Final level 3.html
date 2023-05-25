@@ -169,11 +169,11 @@
            alert('you lose')
            window.location.reload()
        }
-
-       if ( myHitOther('character','myEnemy01') ){
-           alert('you died')
+       if ( myHitOther('character','myImg29') ){
+           alert('you lose')
            window.location.reload()
        }
+
        if ( myHitOther('character','myEnemy02') ){
            alert('you died')
            window.location.reload()
@@ -233,10 +233,14 @@
 <img id="myImg22" src="metal texture.jpg" style="position:absolute; width:200px; height:10px; left: 0px; top:620px;">
 <img id="myImg23" src="metal texture.jpg" style="position:absolute; width:200px; height:10px; left: 200px; top:620px;">
 <img id="myImg24" src="metal texture.jpg" style="position:absolute; width:200px; height:10px; left: 400px; top:620px;">
+<img id="myImg26" src="metal texture.jpg" style="position:absolute; width:200px; height:10px; left: 800px; top:330px;">
+<img id="myImg27" src="metal texture.jpg" style="position:absolute; width:200px; height:10px; left: 1000px; top:330px;">
+<img id="myImg28" src="metal texture.jpg" style="position:absolute; width:200px; height:10px; left: 1200px; top:330px;">
+<img id="myImg29" src="metal texture.jpg" style="position:absolute; width:200px; height:10px; left: 1400px; top:330px;">
+
 
     <!--Enemy-->
     <!--Enemy-->
-<img id="myEnemy01" src="I-am-once-again-asking-for-your-financial-support.gif" style="position:absolute; width:100px; height:80px; left:710px; top:120px;">
 <img id="myEnemy02" src="spooky ghost.png" style="position:absolute; width:100px; height:80px; left:0px; top:650px;">
     <script>
         // Move image using WASD keys
@@ -262,61 +266,44 @@
         });
       </script>
       <script>
-      const myImg = document.getElementById("myImg14");
-      const myEnemy01 = document.getElementById("myEnemy01");
-      const myEnemy02 = document.getElementById("myEnemy02");
-      const myImage13 = document.getElementById("myImg13");
-    
-      let myEnemy01X = window.innerWidth - myEnemy01.width;
-      let myEnemy02X = 0;
-      let speed = 2;
-      let myEnemy01Direction = -1;
-      let myEnemy02Direction = 1;
-    
-      function moveEnemies() {
-        myEnemy01X += speed * myEnemy01Direction;
-    
-        if (
-          myEnemy01X + myEnemy01.width >= myImg.offsetLeft &&
-          myEnemy01X <= myImg.offsetLeft + myImg.width
-        ) {
-          myEnemy01Direction *= -1;
+        const myImg = document.getElementById("myImg14");
+        const myEnemy02 = document.getElementById("myEnemy02");
+        const myImage13 = document.getElementById("myImg13");
+      
+        let myEnemy02X = 0;
+        let speed = 2;
+        let myEnemy02Direction = 1;
+      
+        function moveEnemy02() {
+          myEnemy02X += speed * myEnemy02Direction;
+      
+          if (
+            myEnemy02X + myEnemy02.width >= myImg.offsetLeft &&
+            myEnemy02X <= myImg.offsetLeft + myImg.width
+          ) {
+            myEnemy02Direction *= -1;
+          }
+      
+          if (myEnemy02X + myEnemy02.width >= window.innerWidth || myEnemy02X <= 0) {
+            myEnemy02Direction *= -1;
+          }
+      
+          if (
+            myEnemy02X + myEnemy02.width >= myImage13.offsetLeft &&
+            myEnemy02X <= myImage13.offsetLeft + myImage13.width
+          ) {
+            myEnemy02Direction *= -1;
+          }
+      
+          myEnemy02.style.left = myEnemy02X + "px";
         }
-    
-        if (myEnemy01X + myEnemy01.width >= window.innerWidth || myEnemy01X <= 0) {
-          myEnemy01Direction *= -1;
+      
+        function gameLoop() {
+          moveEnemy02();
+          requestAnimationFrame(gameLoop);
         }
-    
-        myEnemy01.style.left = myEnemy01X + "px";
-    
-        myEnemy02X += speed * myEnemy02Direction;
-    
-        if (
-          myEnemy02X + myEnemy02.width >= myImg.offsetLeft &&
-          myEnemy02X <= myImg.offsetLeft + myImg.width
-        ) {
-          myEnemy02Direction *= -1;
-        }
-    
-        if (myEnemy02X + myEnemy02.width >= window.innerWidth || myEnemy02X <= 0) {
-          myEnemy02Direction *= -1;
-        }
-    
-        if (
-          myEnemy02X + myEnemy02.width >= myImage13.offsetLeft &&
-          myEnemy02X <= myImage13.offsetLeft + myImage13.width
-        ) {
-          myEnemy02Direction *= -1;
-        }
-    
-        myEnemy02.style.left = myEnemy02X + "px";
-      }
-    
-      function gameLoop() {
-        moveEnemies();
-        requestAnimationFrame(gameLoop);
-      }
-    
-      gameLoop();
-    </script>
+      
+        gameLoop();
+      </script>
+      
       
